@@ -1,5 +1,3 @@
-mergeandgitrebase)
-
 # Java basics
 
 ### What is JavaBean?
