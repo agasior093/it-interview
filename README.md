@@ -230,6 +230,8 @@ completableFuture.get();
 
 ### Explain Inversion of Control and Dependency Injection.
 
+Inversion of Control (IoC) is generic term, that means that application is not calling framework, but framework is calling implementation provided by application. In Spring Framework... TODO
+
 ### What types of Dependency Injection in Spring you know?
 
 - via constructor
@@ -268,6 +270,8 @@ class AnotherService {
     private SomeService someService;
 }
 ```
+
+- @Lookup - TODO
 
 ### What are the benefits of different Dependency Injection methods in Spring?
 
