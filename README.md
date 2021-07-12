@@ -13,6 +13,14 @@ This is simple class that contains getters, setters, default constructor and imp
 
 ### What is the difference between `interface` and `abstract class`?
 
+JDK 8 introduced `default` method for interfaces, which can contain implementation. The same version introduces `static` method inside interfaces as well.
+
+- abstract class may contain state (data members) and/or implementation methods 
+- subclass can implement many interfaces but can extend only one abstract class
+- abstract class can be inherited without providing implementation for abstract methods, however in that case, subclass must be annotated as `abstract` as well
+- abstract class can contain `final` methods
+- abstract class can contain constructor
+
 ### Can you `@Override` private method?
 
 No, because `private` method is only visible in class that declared it.
@@ -63,9 +71,46 @@ It is usefull for compilation time checking of your code. It is used to annotate
 
 ### How is `String` created? What is String pool?
 
+### What is the outcome of each `System.out.println()`? Why?
+
+```java
+String s1 = "Java";
+String s2 = "Java";
+StringBuilder sb1 = new StringBuilder();
+sb1.append("Ja").append("va");
+
+System.out.println(s1 == s2); (1)
+System.out.println(s1.equals(s2)); (2)
+System.out.println(sb1.toString() == s1); (3)
+System.out.println(sb1.toString().equals(s1)); (4)
+```
+
+- (1) - `==` operator is used to compare references, therefore it shouldn't be used to compare Strings. However, because `s1` and `s2` were created by `=`, and not by constructor, `s2` is just another reference to `s1` that already exists in String pool, therefore `==` will return `true`
+- (2) - we compare values ("Java") as literals, therefore result is `true`
+- (3) - `toString()` is internally calling `new String(value)`, therefore even if passed `value` exists in String pool, new one will be created, therefore `==` will return false.
+- (4) - we are comparing two separate objects, however their values are the same, therefore result is `true`
+
+
 ### Does Java support multiple inheritance?
 
 ### Can `Enum` extend other class? Can it implement interface?
+
+### Will this compile and work properly? Why?
+
+```java
+class Outer {
+   class Inner1 {
+       private String x = "x";
+   }
+
+   class Inner2 {
+       public void fun() {
+           System.out.println(new Inner1().x);
+       }
+   }
+}
+```
+Inner classes have access to `private` memebers of outer classes, therefore this will work properly.
 
 
 # Collections
@@ -167,9 +212,48 @@ completableFuture.get();
 
 ### Explain Inversion of Control and Dependency Injection.
 
-### How to externalize variables in property files in Spring Boot application?
+### What types of Dependency Injection in Spring you know?
 
-### What is the use of `@Autowired`?
+- via constructor
+```java
+@Service
+class SomeService { }
+
+@Service
+class AnotherService {
+    private final SomeService someService;
+
+    AnotherService(SomeService someService) {
+        this.someService = someService;
+    }
+}
+```
+
+- via setter
+```java
+@Service
+class AnotherService {
+    private SomeService someService;
+
+    @Autowired
+    public void setSomeService(SomeService someService) {
+        this.someService = someService;
+    }
+}
+```
+
+- via field
+```java
+@Service
+class AnotherService {
+    @Autowired
+    private SomeService someService;
+}
+```
+
+### What are the benefits of different Dependency Injection methods in Spring?
+
+### How to externalize variables in property files in Spring Boot application?
 
 ### What is the use of `@ConfigurationProperties`?
 
