@@ -103,10 +103,10 @@ System.out.println(sb1.toString() == s1); (3)
 System.out.println(sb1.toString().equals(s1)); (4)
 ```
 
-- (1) - `==` operator is used to compare references, therefore it shouldn't be used to compare Strings. However, because `s1` and `s2` were created by `=`, and not by constructor, `s2` is just another reference to `s1` that already exists in String pool, therefore `==` will return `true`
-- (2) - we compare values ("Java") as literals, therefore result is `true`
-- (3) - `toString()` is internally calling `new String(value)`, therefore even if passed `value` exists in String pool, new one will be created, therefore `==` will return false.
-- (4) - we are comparing two separate objects, however their values are the same, therefore result is `true`
+- (1) `==` operator is used to compare references, therefore it shouldn't be used to compare Strings. However, because `s1` and `s2` were created by `=`, and not by constructor, `s2` is just another reference to `s1` that already exists in String pool, therefore `==` will return `true`
+- (2) we compare values ("Java") as literals, therefore result is `true`
+- (3) `toString()` is internally calling `new String(value)`, therefore even if passed `value` exists in String pool, new one will be created, therefore `==` will return false.
+- (4) we are comparing two separate objects, however their values are the same, therefore result is `true`
 
 
 ### Does Java support multiple inheritance?
