@@ -59,6 +59,8 @@ b.fun(); // here result is "B"
 
 It is usefull for compilation time checking of your code. It is used to annotate `interface` that has exactly one abstract method, therefore it can be used with lambdas. Instances of functional interfaces can be created with lambda expressions, method references or constructor references. 
 
+### Is Java pass-by-value or pass-by-reference? What is the difference by value and reference?
+
 ### What is lambda?
 
 ### What is `Stream`?
@@ -72,6 +74,22 @@ It is usefull for compilation time checking of your code. It is used to annotate
 ### What is the difference between `String`, `StringBuilder` and `StringBuffer`?
 
 ### How is `String` created? What is String pool?
+
+`String` is sequence of characters, one of most important characteristics of a string in Java is that it is immutable. Once created, the internal state of a string remains the same. It is achieved by use of string pool.
+
+String constant pool is separate place in heap memory where the values of all the strings defined by the program are stored. 
+
+When you create string like this:
+`String str1 = "lorem ipsum";` 
+Literal "lorem ipsum" is stored in the heap and object string is created in the stack and it points towards value in the heap.
+
+Now, if you create another string like this:
+`String str2 = "lorem ipsum";` 
+Value "lorem ipsum" already exists in the heap, therefore it is not created, instead there is new reference to it created in the stack.
+
+Finally, if you create yet another string like this:
+`String str3 = new String("lorem ipsum");`
+Regardless if literal "lorem ipsum" exists or not in the heap, calling constructor directly will always create new value in the heap and corresponding reference in the stack. 
 
 ### What is the outcome of each `System.out.println()`? Why?
 
