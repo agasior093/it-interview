@@ -207,6 +207,19 @@ Inner classes have access to `private` memebers of outer classes, therefore this
 
 ### How is HashMap implemented internally?
 
+HashMap store objects as key value pair. Internally, there is an array of buckets, where each bucket is LinkedList of Nodes (from JDK8 LinkedList was replaced with binary tree)
+When client puts an object into HashMap: 
+- bucket index is calculated using `key.hashCode() & (n - 1)`, where `n` is array size
+- if bucket is empty, value is added at the begining of it 
+- if bucket is not empty, new key is evaluated against other keys in this bucket using `key.equals()` method. If key was different, new node is added at the end of bucket's LinkedList. If key was already present, it's value is replaced with new one
+
+Getting elements from HashMap is similar to putting one:
+- bucket index is calculated using `key.hashCode() & (n - 1)`, where `n` is array size
+- if bucket is empty, first value is returned
+- if bucket is not empty, it iterates over LinkedList comparing each value by `equals()` until the result is found
+
+### What is the difference between HashMap and HashTable?
+
 ### Why you should always override both `equals()` and `hashCode()`?
 
 ### What is the difference between LinkedList and ArrayList? In what cases would you use one instead of the other?
