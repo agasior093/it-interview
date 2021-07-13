@@ -1,5 +1,14 @@
 # Java basics
 
+### What is JDK, JRE and JVM?
+
+- JDK - Java Development Kit is set of tools that can translate Java code into byte code. It includes for example Java compiler and debugger.
+
+- JRE - Java Runtime Environment is set of different libraries that are necessary to run Java application on given machine. It comes with Java Launcher and JVM.
+
+- JVM - Java Virtual Machine is kind of abstract computing machine, that is able to translate Java byte code into machine code that is understandable by CPU of given machine. That means that application compiled once, can run on different operation systems and CPU architectures, because JVM takes care of translating compiled Java code into set of correct CPU instructions.
+
+
 ### What is JavaBean?
 
 This is simple class that contains getters, setters, default constructor and implements `Serializable` interface.
