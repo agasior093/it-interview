@@ -130,9 +130,13 @@ Lambda is an anonymous function, which can be used to provide implementation of 
 - Unchecked exceptions - run time exceptions, can be thrown without catching. In most cases they represent programming error, like for example `NullPointerException`.
 - Errors - unchecked as well, thrown by JVM when something very wrong is happening, most likely unrecoverable, like for example `OutOfMemory`
 
-### What is the difference between `&` and `&&`?
+###What is the difference between `&` or `|` and `&&` or `||`?
 
-### What is the difference between `|` and `||`?
+They are both logical AND / OR operators, however `&&` or `||`  will stop evaluation if first condition is met and `&` or `|` will evaulate both conditions. 
+
+For example `if(isEven(5) && isEven(2)) {...}` will execute only first method call, because it is clear that whole condition will evaluate to false. 
+
+However, `if(isEven(5) & isEven(2)) {...}` will execute both method calls.
 
 ### What is the difference between `String`, `StringBuilder` and `StringBuffer`?
 
