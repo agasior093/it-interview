@@ -218,9 +218,14 @@ Getting elements from HashMap is similar to putting one:
 - if bucket is empty, first value is returned
 - if bucket is not empty, it iterates over LinkedList comparing each value by `equals()` until the result is found
 
+### Why you should always override both `equals()` and `hashCode()`?
+
+Explained in previous question, both `hashCode()` and `equals()` is used to put or get element from Hash based collection.
+
 ### What is the difference between HashMap and HashTable?
 
-### Why you should always override both `equals()` and `hashCode()`?
+- HashMap is not synchronized, therefore it is not thread-safe
+- HashMap allows one `null` key and multiple `null` values, whereas HashTable does not except it both as key or value
 
 ### What is the difference between LinkedList and ArrayList? In what cases would you use one instead of the other?
 
