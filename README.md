@@ -476,7 +476,7 @@ class Service {
 }
 ```
 
-**Answer: ** `@Transactional` works only when annotated method is public and invoked from another bean. Otherwise, the annotation will be silently ignored.
+`@Transactional` works only when annotated method is public and invoked from another bean. Otherwise, the annotation will be silently ignored.
 At high level, Spring creates proxies for all the class / methods annotated with `@Transactional`. The proxy allows the framework to inject transactional logic before and after running the method. 
 
 ### What is the difference between JPA, Hibernate and Spring Data?
