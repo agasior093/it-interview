@@ -114,9 +114,21 @@ class User {
 
 ### What is lambda?
 
+Lambda is an anonymous function, which can be used to provide implementation of functional interface. It can reduce amount of necessary boilerplate code, because you no longer have to create anonymous inner class. It also translates to faster application startup performance. Under the hood, lambdas are using invokedynamic bytecode instruction, which defer the selection of translation strategy until run time. Translation of lambda expression into bytecode is performed in two steps:
+- generate an invokedynamic call site (lambda factory), which when invoked returns an instance of Functional Interface
+- convert the body of the lambda expression into a method that will be invoked through the invokedynamic instruction
+
 ### What is `Stream`?
 
+- Sequence of objects that supports various methods, which can be pipelined to produce desired result. 
+- Stream is not a data structure, instead it takes input from the Collection or I/O channel.
+- Stream don't change original data source.
+- Each intermediate operation is lazily executed and returns stream as result
+
 ### What kind of exceptions are in Java?
+- Checked exceptions - compile time exceptions, must be handled by programmer (`try...catch` / `throws`) or else compilation will fail. In most cases they represent external issues, like `FileNotFoundException` that can be recovered.
+- Unchecked exceptions - run time exceptions, can be thrown without catching. In most cases they represent programming error, like for example `NullPointerException`.
+- Errors - unchecked as well, thrown by JVM when something very wrong is happening, most likely unrecoverable, like for example `OutOfMemory`
 
 ### What is the difference between `&` and `&&`?
 
@@ -165,6 +177,9 @@ System.out.println(sb1.toString().equals(s1)); (4)
 ### Does Java support multiple inheritance?
 
 ### Can `Enum` extend other class? Can it implement interface?
+
+It can't extend other class, but can implement interface.
+TODO explain why
 
 ### Will this compile and work properly? Why?
 
