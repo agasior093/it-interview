@@ -447,7 +447,7 @@ public class DemoApplication {
 ```
 And finally, we can inject our `PropertyBean` like any other dependency and use it in our code.
 
-```
+```java
 @Component
 public class SingletonBean {
     private final PropertyBean propertyBean;
