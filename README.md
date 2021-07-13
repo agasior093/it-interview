@@ -230,6 +230,10 @@ completableFuture.get();
 
 ### How Spring Boot works internally? 
 
+### What is Bean?
+
+It is a class instance (object) managed by IoC Container.
+
 ### What are bean scopes in Spring?
 
 - singleton (default) - single instance per application
@@ -240,7 +244,14 @@ completableFuture.get();
 
 ### Explain Inversion of Control and Dependency Injection.
 
-Inversion of Control (IoC) is generic term, that means that application is not calling framework, but framework is calling implementation provided by application. In Spring Framework... TODO
+Inversion of Control (IoC) is generic term, that means that application is not calling framework, but framework is calling implementation provided by application. In Spring Framework it means that dependencies are created, maintained and injected to application code by framework. Programmer does not need to handle whole lifecycle of object managed by IoC container.
+
+Dependency Injection is simply passing dependency to another object.
+
+Together, in Spring world, it comes down to few points:
+- programmer defines which classes should be managed by IoC container, by using for example `@Component` annotation (other options are configuration classes or XML configurations)
+- programmer defines what dependencies are necessary for this class to be created, by for example constructor, field or setter injection
+- Spring BeanFactory takes this configuration created by programmer, creates Beans out of it and makes it availalbe in IoC Container
 
 ### What types of Dependency Injection in Spring you know?
 
@@ -320,11 +331,21 @@ public class SingletonBean {
 
 ### What are the benefits of different Dependency Injection methods in Spring?
 
+- safety - once your object is created it is safe to use
+- testability - you can easily create new instance of your class for testing using `new` operator, it is clear enough which dependencies are necessary
+- immutability - you can mark dependencies as `final` and then, once created, they cannot be changed
+- cleaner expression of mandatory dependencies 
+- cleaner design - it is easy to add more and more `@Autowired` fields, which leads to classes with a lot of dependencies. If you have to add 5th dependency to your constructor, you will start to think if the design is good
+
 ### How to externalize variables in property files in Spring Boot application?
+
+- use environment variables inside property file `myprop.javaPath=${JAVA_HOME}`
+- provide config location while starting an app `java -jar app.jar --spring.config.location=file://etc/home/new_config.properties`
 
 ### What is the use of `@ConfigurationProperties`?
 
-Instead of injecting properties with `@Value`, we can inject POJOs instead.
+Instead of injecting properties with `@Value`, we can inject type-safe POJOs instead.
+We can also define default values on class level.
 
 Firstly, we define some set of properties in `application.properties` 
 
