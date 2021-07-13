@@ -91,8 +91,8 @@ public class DemoApplication {
 		var value = 5;
 		changeObject(user);
 		changePrimitive(value);
-		System.out.println(user.name); //displays change name
-		System.out.println(value); //displays 5
+		System.out.println(user.name); //displays "changed name"
+		System.out.println(value); //displays "5"
 	}
 
 	public static void changeObject(User user) {
@@ -102,7 +102,7 @@ public class DemoApplication {
 	//passing primitive value means making a copy of that value inside this function
 	public static void changePrimitive(int value) {
 		value = value * 2;
-		System.out.println("inside method: " + value); // displays 10
+		System.out.println("inside method: " + value); // displays "5"
 	}
 }
 
@@ -110,8 +110,6 @@ class User {
 	public String name = "initial name";
 }
 ```
-
-
 
 
 ### What is lambda?
