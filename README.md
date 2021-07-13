@@ -66,9 +66,53 @@ b.fun(); // here result is "B"
 
 It is usefull for compilation time checking of your code. It is used to annotate `interface` that has exactly one abstract method, therefore it can be used with lambdas. Instances of functional interfaces can be created with lambda expressions, method references or constructor references. 
 
-### What is the difference by value and reference?
-
 ### Is Java pass-by-value or pass-by-reference? 
+
+TLDR: Java is pass-by-value. 
+
+- In Java we have primitives (`byte`, `short`, `long`, `float`, `double`, `char`, `boolean`) and reference types
+- All data for primitive type variables is stored on the stack
+- For reference types, the stack holds a pointer to the object on the heap
+- When setting a reference type variable equal to another reference type variable, a copy of only the pointer is made
+
+Screen below explains how primitives and references are stored in memory. Primitives stores the actual values, whereas reference types store the reference to the object.
+![image](https://user-images.githubusercontent.com/24475158/125502772-0873889e-36f8-4e51-a7bc-0679e008db00.png)
+
+- When you pass an argument to a function, copy of that argument is created
+- In case of primitives, new one is created on the stack and any changes made to it are made on copy of original primitive
+- In case of reference types, copy of value is created on the stack, but this value is just a pointer to the object on the stack, therefore any changes made to this copy, are reflected in original object as well 
+
+Code example:
+
+```java
+public class DemoApplication {
+	public static void main(String[] args) {
+		var user = new User();
+		var value = 5;
+		changeObject(user);
+		changePrimitive(value);
+		System.out.println(user.name); //displays change name
+		System.out.println(value); //displays 5
+	}
+
+	public static void changeObject(User user) {
+		user.name = "changed name";
+	}
+
+	//passing primitive value means making a copy of that value inside this function
+	public static void changePrimitive(int value) {
+		value = value * 2;
+		System.out.println("inside method: " + value); // displays 10
+	}
+}
+
+class User {
+	public String name = "initial name";
+}
+```
+
+
+
 
 ### What is lambda?
 
