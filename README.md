@@ -57,7 +57,9 @@ b.fun(); // here result is "B"
 
 It is usefull for compilation time checking of your code. It is used to annotate `interface` that has exactly one abstract method, therefore it can be used with lambdas. Instances of functional interfaces can be created with lambda expressions, method references or constructor references. 
 
-### Is Java pass-by-value or pass-by-reference? What is the difference by value and reference?
+### What is the difference by value and reference?
+
+### Is Java pass-by-value or pass-by-reference? 
 
 ### What is lambda?
 
@@ -322,7 +324,53 @@ public class SingletonBean {
 
 ### What is the use of `@ConfigurationProperties`?
 
-### What is Zookeeper?
+Instead of injecting properties with `@Value`, we can inject POJOs instead.
+
+Firstly, we define some set of properties in `application.properties` 
+
+```
+myprop.appName=test name
+myprop.appDescription=test description
+```
+
+Then we configure class that will read those properties
+
+```java
+@ConfigurationProperties(prefix = "myprop")
+public class PropertyBean {
+
+    private String appName;
+    private String appDescription;
+    
+    //getter, setter
+}
+
+```
+
+We also have to add required annotation to main class
+
+```java
+@SpringBootApplication
+@ConfigurationPropertiesScan
+public class DemoApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+}
+```
+And finally, we can inject our `PropertyBean` like any other dependency and use it in our code.
+
+```
+@Component
+public class SingletonBean {
+    private final PropertyBean propertyBean;
+
+    public SingletonBean(PropertyBean propertyBean) {
+        this.propertyBean = propertyBean;
+        System.out.println(this.propertyBean.getAppName() + " " + this.propertyBean.getAppDescription());
+    }
+}
+```
 
 ### What is wrong with this code?
 ```java
