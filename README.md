@@ -228,6 +228,14 @@ completableFuture.get();
 
 ### How Spring Boot works internally? 
 
+### What are bean scopes in Spring?
+
+- singleton (default) - single instance per application
+- prototype - different instance every time it is request from container
+- request - one instance for lifecycle of HTTP request
+- session - one instance for whole user session
+- application - similar to singleton, however in case of application scape, the same instance of the bean is shared across multiple servlet-based applications running in the same ServletContext, while singleton scoped beans are scoped to a single application context only. This is valid only in the context of web-aware Spring ApplicationContext
+
 ### Explain Inversion of Control and Dependency Injection.
 
 Inversion of Control (IoC) is generic term, that means that application is not calling framework, but framework is calling implementation provided by application. In Spring Framework... TODO
@@ -271,7 +279,42 @@ class AnotherService {
 }
 ```
 
-- @Lookup - TODO
+- @Lookup - this is usefull if you want to use prototype scoped bean inside singleton scoped bean. In theory, you can inject it via constructor or any other method, however singleton bean is created on application start and stays in JVM memory for whole duration of application run time. On the other hand, prototype scope is used to create bean on demand, therefore most likely you don't want to bind creation of singleton and prototype beans. That's where you should consider using `@Lookup`, that will provide instance of prototype bean when needed, but not before. 
+
+```java
+@Component
+@Scope("prototype")
+public class ProtoBean {
+
+    public ProtoBean() {
+        System.out.println("proto bean created");
+    }
+
+    public void call() {
+        System.out.println("proto bean called");
+    }
+}
+
+@Component
+public class SingletonBean {
+
+    private final ApplicationContext applicationContext;
+
+    public SingletonBean(ApplicationContext applicationContext) {
+        System.out.println("singleton bean created");
+        this.applicationContext = applicationContext;
+    }
+
+    @Lookup
+    public ProtoBean protoBean() {
+        return applicationContext.getBean(ProtoBean.class);
+    }
+    
+    public void callProto() {
+    	protoBean().call();
+    }
+}
+```
 
 ### What are the benefits of different Dependency Injection methods in Spring?
 
@@ -306,6 +349,24 @@ At high level, Spring creates proxies for all the class / methods annotated with
 **Hibernate** - implementation of the JPA specification.
 **SpringData** - abstraction layer on top of Hibernate or any other JPA implementation, which makes it easier to use
 
+
+# Design Patterns
+
+## Strategy
+
+## Factory 
+
+## Abstract Factory
+
+## Chain of Responsibility
+
+## Facade
+
+## Mediator
+
+## Builder
+
+## Singleton
 
 # Testing
 
