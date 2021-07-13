@@ -481,7 +481,9 @@ At high level, Spring creates proxies for all the class / methods annotated with
 
 ### What is the difference between JPA, Hibernate and Spring Data?
 **JPA - Java Persistance API** - specification that describes the management of relation data in applications using Java SE/EE. 
+
 **Hibernate** - implementation of the JPA specification.
+
 **SpringData** - abstraction layer on top of Hibernate or any other JPA implementation, which makes it easier to use
 
 
