@@ -313,6 +313,8 @@ completableFuture.get();
 
 ### Q. How to write thread-safe application?
 
+### Q. What is JMS?
+
 
 # Spring Framework
 
