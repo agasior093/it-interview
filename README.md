@@ -595,3 +595,9 @@ At high level, Spring creates proxies for all the class / methods annotated with
 - healthchecks
 - alerts 
 
+### Q. What is MQ?
+
+### Q. What is exchange?
+
+### Q. What is the difference between queue and topic?
+
