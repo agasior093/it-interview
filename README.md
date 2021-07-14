@@ -20,6 +20,8 @@ This is simple class that contains getters, setters, default constructor and imp
 - `protected` - visible to subclasses of class that declared it
 - `public` - visible everywhere
 
+### What is `transient` variable?
+
 ### What is the difference between `interface` and `abstract class`?
 
 JDK 8 introduced `default` method for interfaces, which can contain implementation. The same version introduces `static` method inside interfaces as well.
@@ -130,7 +132,9 @@ Lambda is an anonymous function, which can be used to provide implementation of 
 - Unchecked exceptions - run time exceptions, can be thrown without catching. In most cases they represent programming error, like for example `NullPointerException`.
 - Errors - unchecked as well, thrown by JVM when something very wrong is happening, most likely unrecoverable, like for example `OutOfMemory`
 
-###What is the difference between `&` or `|` and `&&` or `||`?
+### What is the difference between `&` or `|` and `&&` or `||`?
+
+### What is the difference between `==` and `equals()`?
 
 They are both logical AND / OR operators, however `&&` or `||`  will stop evaluation if first condition is met and `&` or `|` will evaulate both conditions. 
 
@@ -142,7 +146,7 @@ However, `if(isEven(5) & isEven(2)) {...}` will execute both method calls.
 
 ### How is `String` created? What is String pool?
 
-`String` is sequence of characters, one of most important characteristics of a string in Java is that it is immutable. Once created, the internal state of a string remains the same. It is achieved by use of string pool.
+`String` is sequence of characters, one of most important characteristics of a string in Java is that it is immutable. Once created, the internal state of a string remains the same (String is immutable)
 
 String constant pool is separate place in heap memory where the values of all the strings defined by the program are stored. 
 
@@ -202,6 +206,11 @@ class Outer {
 ```
 Inner classes have access to `private` memebers of outer classes, therefore this will work properly.
 
+### What does `final` do on class level, method level and variable level?
+
+### What naming conventions are used in Java?
+
+### What is the difference between method overriding and overloading?
 
 # Collections
 
@@ -306,6 +315,17 @@ completableFuture.get();
 
 
 # Spring Framework
+
+### How to validate request body?
+
+### Describe Spring Core technologies
+
+- Dependency Injection
+- Aspect Oriented Programming
+- Application Events
+- SpEL
+
+### How Spring Security works?
 
 ### What is the difference between Spring and SpringBoot?
 **Spring Framework** provides comprehensive infrastructure support for developing Java applications. It comes with features like Dependency Injection and offers various modules that can simplify common use cases and reduce amount of necessary of boilerplate code. Some of most known modules are:
@@ -508,6 +528,10 @@ At high level, Spring creates proxies for all the class / methods annotated with
 
 **SpringData** - abstraction layer on top of Hibernate or any other JPA implementation, which makes it easier to use
 
+### Explain N+1 problem in Hibernate. How can you avoid it?
+
+### Fetch types in Hibernate, what is the difference?
+
 
 # Design Patterns
 
@@ -540,8 +564,32 @@ At high level, Spring creates proxies for all the class / methods annotated with
 
 ### What is Maven?
 
+### What is Docker?
+
+### What Dockerfile contains?
+
 ### How would you investigate poor performance of application?
 
 ### How would you investigate poor performance of database?
 
 ### What is the difference between `git merge` and `git rebase`?
+
+### Describe differences between different HTTP codes
+
+### Design REST API for simple CRUD 
+
+### What kinds of authentications you know? 
+
+- Basic auth
+- Bearer token
+- OAuth2
+
+### How to monitor application in production?
+
+- meaningful logs
+- track number of requests and their status codes
+- track CPU, memory, disk usage
+- track JVM metrics (garbage collecting, etc)
+- healthchecks
+- alerts 
+
