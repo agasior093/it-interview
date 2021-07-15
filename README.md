@@ -601,3 +601,4 @@ At high level, Spring creates proxies for all the class / methods annotated with
 
 ### Q. What is the difference between queue and topic?
 
+### Q. Why we use foreign key in databases?
