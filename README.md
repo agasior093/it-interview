@@ -38,7 +38,7 @@ No, because `private` method is only visible in class that declared it.
 
 ### Q. Can you `@Override` static method?
 
-Overriding in Java simply means that the particulat method would be called based on the run time typ eof the object, therefore it is not possible to override static methods.
+Overriding in Java simply means that the particulat method would be called based on the run time type of the object, therefore it is not possible to override static methods.
 Parent class methods that are static are not part of child class (although they are accessible), so there is no question of overriding it. Even if you add another static method in a subclass, identical to the one in its parent class, the subclass static method is unique and distinct from the static method in its parent class.
 
 Consider this example:
@@ -104,7 +104,7 @@ public class DemoApplication {
 	//passing primitive value means making a copy of that value inside this function
 	public static void changePrimitive(int value) {
 		value = value * 2;
-		System.out.println("inside method: " + value); // displays "5"
+		System.out.println("inside method: " + value); // displays "10"
 	}
 }
 
@@ -135,12 +135,6 @@ Lambda is an anonymous function, which can be used to provide implementation of 
 ### Q. What is the difference between `==` and `equals()`?
 
 ### Q. What is the difference between `&` or `|` and `&&` or `||`?
-
-They are both logical AND / OR operators, however `&&` or `||`  will stop evaluation if first condition is met and `&` or `|` will evaulate both conditions. 
-
-For example `if(isEven(5) && isEven(2)) {...}` will execute only first method call, because it is clear that whole condition will evaluate to false. 
-
-However, `if(isEven(5) & isEven(2)) {...}` will execute both method calls.
 
 ### Q. What is the difference between `String`, `StringBuilder` and `StringBuffer`?
 
